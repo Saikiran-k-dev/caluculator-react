@@ -1,8 +1,16 @@
+import { useState } from "react";
+import Controls from "./Components/Controls";
+import Display from "./Components/Display";
 
 
 function App() {
+  const [output,setOutput] = useState('0');
   return (
-    <h1>Welcome</h1>
+    <div>
+      <Display output={output} />
+      <Controls output={output} 
+                setOutput={setOutput} />
+    </div>
   );
 }
 
