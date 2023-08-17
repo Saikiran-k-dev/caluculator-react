@@ -1,0 +1,15 @@
+.display{
+    height: 25%;
+    background-color: #F1F0E8;
+    margin: 0;
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: end;
+    font-size: 3rem;
+    font-weight: 400;
+    /* overflow-wrap: break-word; */
+    /* word-wrap: break-word; */
+    word-break: break-word;
+}

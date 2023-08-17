@@ -1,15 +1,16 @@
-import { useState } from "react";
-import Controls from "./Components/Controls";
-import Display from "./Components/Display";
+
+import styles from "./Styles/app.module.css";
+import Calculator from "./Components/Calculator";
 
 
 function App() {
-  const [output,setOutput] = useState('0');
+
   return (
-    <div>
-      <Display output={output} />
-      <Controls output={output} 
-                setOutput={setOutput} />
+    <div className={styles.mainContainer}>
+      <div className={styles.heading}>
+        <h1>CalCulator</h1>
+      </div>
+      <Calculator />    
     </div>
   );
 }

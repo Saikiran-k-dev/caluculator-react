@@ -1,0 +1,17 @@
+.mainContainer{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.heading{
+    width: 75%;
+    height:10%;
+    background-color: rgb(216, 216, 228);
+    text-align: center;
+}

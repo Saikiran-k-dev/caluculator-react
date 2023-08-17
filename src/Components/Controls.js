@@ -1,109 +1,89 @@
-import { useState } from "react";
+import styles from '../Styles/controls.module.css';
+import ControlButton from './ControlButton';
 
+const operators = ['AC','C','%','/',
+                    '7','8','9','*',
+                    '4','5','6','-',
+                    '1','2','3','+',
+                    '0','.','='];
 
 const Controls = (props) => {
     const {output, setOutput} = props;
-    const [oper1,setOper1] = useState();
-    const [operation,setOperation] = useState('');
-    const [oper2,setOper2] = useState();
 
     const handleClick = (value) => {
-        // e.preventDefault();
-        setOutput( output + value);
+        switch(value){
+            case 'AC':
+                setOutput('0');
+                break;
+            
+            case 'C':
+                if(output.length === 1){
+                    setOutput('0')
+                    break;
+                }
+                setOutput(output.slice(0,output.length-1));
+                break;
+            
+            case '%':
+                if( output === '0' || output === '+' || output === '-'){
+                    window.alert('Please First Enter a value!!');
+                    break;
+                }
+                const answer = eval(output * '0.01');
+                setOutput(answer.toString());
+                break;
+
+            case '=':
+                var result = eval(output).toString();
+                if(result.length > 22){
+                    result=Number(result).toExponential();
+                }
+                setOutput(result);
+                break;
+
+            case '/':
+                case '%':
+                if( output === '0' || output === '+' || output === '-'){
+                    window.alert('Please First Enter a value!!');
+                    break;
+                }
+
+            case '*':
+                if( output === '0' || output === '+' || output === '-'){
+                    window.alert('Please First Enter a value!!');
+                    break;
+                }
+
+            case '+':
+                if( output === '+' || output === '-'){
+                    window.alert('Please First Enter a value!!');
+                    break;
+                }
+
+            case '-':
+                if( output === '+' || output === '-'){
+                    window.alert('Please First Enter a value!!');
+                    break;
+                }
+
+            default:
+                if(output === '0'){
+                    setOutput(value.toString());
+                    break;
+                }
+                setOutput(output + value);
+                break;
+        }
     }
 
-    const handleSymbolClick = (symbol) => {
-        setOper1(Number(output));
-        setOutput(output + symbol);
-        setOperation(symbol);
-    }
 
     return(
-        <>
-            <h2>Controls</h2>
-            <ul>
-                <li>
-                    <button onClick={ () => handleClick(1) }>
-                        1
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(2) }>
-                        2
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(3)}>
-                        3
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(4)}>
-                        4
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(5) }>
-                        5
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(6)}>
-                        6
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(7)}>
-                        7
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(8)}>
-                        8
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(9)}>
-                        9
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(0)}>
-                        0
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(5) }>
-                        +
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(6)}>
-                        -
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(7)}>
-                        *
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick(/)}>
-                        /
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick('=')}>
-                        =
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => handleClick('clear')}>
-                        C
-                    </button>
-                </li>
-            </ul>
-        </>
+        <div className={styles.controlContainer}>
+            {operators.map((value,i) => <ControlButton key={i}
+                                                        index={i}
+                                                        value={value}
+                                                        handleClick={handleClick} />)}
+        </div>
     );
 }
 
