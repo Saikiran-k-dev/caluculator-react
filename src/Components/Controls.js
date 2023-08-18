@@ -26,26 +26,32 @@ const Controls = (props) => {
                     break;
                 }
                 setInput(input.slice(0,input.length-1));
-                if(isSymbolClick){
-                    break;
-                }
-                setOutput(eval(input));
                 break;
             
             case '%':
+                var answer;
                 if(isSymbolClick){
-                    return;
+                    const newInput = input.slice(0,input.length-1);
+                    answer = eval(`${newInput} / 100`);
                 }
-                const answer = eval(input * '0.01');
+                else{
+                    answer = eval(`${input} / 100`);
+                }
+                console.log(answer);
                 setInput(answer.toString());
                 setOutput(answer);
+                setIsSymbolClick(false);
                 break;
 
             case '=':
+                if(isSymbolClick){
+                    window.alert('Please Enter Correct value');
+                    break;
+                }
                 var result = eval(input);
                 var stringResult =result.toString();
-                if(stringResult.length > 22){
-                    result=(result).toExponential(4);
+                if(stringResult.length > 12){
+                    result=(result).toExponential(2);
                 }
                 setOutput(result);
                 break;
@@ -108,10 +114,10 @@ const Controls = (props) => {
                     setInput(value.toString());
                     break;
                 }
-                if( input.length > 21){
-                    window.alert('Value to long');
-                    break;
-                }
+                // if( input.length > 21){
+                //     window.alert('Value to long');
+                //     break;
+                // }
                 setInput(input + value);
                 if(isSymbolClick){
                     setIsSymbolClick(false);

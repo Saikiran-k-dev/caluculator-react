@@ -19,3 +19,7 @@
     font-size: 2rem;
 }
 
+.controlContainer > div:hover{
+    background-color: #f1dda1;
+}
+
