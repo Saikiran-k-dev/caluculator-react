@@ -1,3 +1,5 @@
+
+/* screen of calculator */
 .display{
     height: 35%;
     width: 98%;
@@ -13,6 +15,8 @@
     word-break: break-word;
 }
 
+
+/* direct children  */
 .display > div {
     width: 100%;
     display: flex;
@@ -20,11 +24,15 @@
     justify-content: flex-end;
 }
 
+
+/* input section of display */
 .inputSection{
     height: 73%;
     overflow-y: auto;
 }
 
+
+/* output section of display */
 .outputSection{
     height: 20%;
     font-size: 2.1rem;
