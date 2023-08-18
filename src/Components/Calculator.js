@@ -4,14 +4,18 @@ import Display from "./Display";
 import styels from "../Styles/calculator.module.css";
 
 const Calculator = () => {
-    const [output,setOutput] = useState('0');
+    const [output,setOutput] = useState(0);
+    const [input,setInput] = useState('0');
     
     return (
         <div className={styels.calculatorLayout}>
-            <Display output={output} />
+            <Display input={input}
+                    output={output} />
             <hr />
-            <Controls output={output} 
-                        setOutput={setOutput} />
+            <Controls input={input} 
+                    setInput={setInput}
+                    output={output} 
+                    setOutput={setOutput} />
         </div>
     );
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from '../Styles/controls.module.css';
 import ControlButton from './ControlButton';
 
@@ -8,70 +9,113 @@ const operators = ['AC','C','%','/',
                     '0','.','='];
 
 const Controls = (props) => {
-    const {output, setOutput} = props;
+    const {input, setInput, output, setOutput} = props;
+    const [isSymbolClick , setIsSymbolClick] = useState(false);
 
     const handleClick = (value) => {
         switch(value){
             case 'AC':
-                setOutput('0');
+                setInput('0');
+                setOutput(0);
                 break;
             
             case 'C':
-                if(output.length === 1){
-                    setOutput('0')
+                if(input.length === 1){
+                    setInput('0')
+                    setOutput(0);
                     break;
                 }
-                setOutput(output.slice(0,output.length-1));
+                setInput(input.slice(0,input.length-1));
+                if(isSymbolClick){
+                    break;
+                }
+                setOutput(eval(input));
                 break;
             
             case '%':
-                if( output === '0' || output === '+' || output === '-'){
-                    window.alert('Please First Enter a value!!');
-                    break;
+                if(isSymbolClick){
+                    return;
                 }
-                const answer = eval(output * '0.01');
-                setOutput(answer.toString());
+                const answer = eval(input * '0.01');
+                setInput(answer.toString());
+                setOutput(answer);
                 break;
 
             case '=':
-                var result = eval(output).toString();
-                if(result.length > 22){
-                    result=Number(result).toExponential();
+                var result = eval(input);
+                var stringResult =result.toString();
+                if(stringResult.length > 22){
+                    result=(result).toExponential(4);
                 }
                 setOutput(result);
                 break;
 
             case '/':
-                case '%':
-                if( output === '0' || output === '+' || output === '-'){
-                    window.alert('Please First Enter a value!!');
+                if( input === '0'){
+                    setIsSymbolClick(true);
+                    setInput( input + value);
                     break;
                 }
+                if(isSymbolClick){
+                    const newInput = input.slice(0,input.length-1)
+                    setInput(newInput + value);
+                    break;
+                }
+                setIsSymbolClick(true);
+
 
             case '*':
-                if( output === '0' || output === '+' || output === '-'){
-                    window.alert('Please First Enter a value!!');
+                if( input === '0'){
+                    setIsSymbolClick(true);
+                    setInput( input + value);
                     break;
                 }
+                if(isSymbolClick){
+                    const newInput = input.slice(0,input.length-1)
+                    setInput(newInput + value);
+                    break;
+                }
+                setIsSymbolClick(true);
 
             case '+':
-                if( output === '+' || output === '-'){
-                    window.alert('Please First Enter a value!!');
+                if( input === '0'){
+                    setIsSymbolClick(true);
+                    setInput( input + value);
                     break;
                 }
+                if(isSymbolClick){
+                    const newInput = input.slice(0,input.length-1)
+                    setInput(newInput + value);
+                    break;
+                }
+                setIsSymbolClick(true);
 
             case '-':
-                if( output === '+' || output === '-'){
-                    window.alert('Please First Enter a value!!');
+                if( input === '0'){
+                    setIsSymbolClick(true);
+                    setInput( input + value);
                     break;
                 }
+                if(isSymbolClick){
+                    const newInput = input.slice(0,input.length-1)
+                    setInput(newInput + value);
+                    break;
+                }
+                setIsSymbolClick(true);
 
             default:
-                if(output === '0'){
-                    setOutput(value.toString());
+                if(input === '0'){
+                    setInput(value.toString());
                     break;
                 }
-                setOutput(output + value);
+                if( input.length > 21){
+                    window.alert('Value to long');
+                    break;
+                }
+                setInput(input + value);
+                if(isSymbolClick){
+                    setIsSymbolClick(false);
+                }
                 break;
         }
     }

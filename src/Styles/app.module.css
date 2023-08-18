@@ -9,6 +9,10 @@
     height: 100vh;
 }
 
+.mainContainer > div{
+    box-shadow: 0px 0px 4px 2px grey;
+}
+
 .heading{
     width: 75%;
     height:10%;

@@ -1,15 +1,31 @@
 .display{
-    height: 25%;
+    height: 35%;
+    width: 98%;
+    padding: 1%;
     background-color: #F1F0E8;
     margin: 0;
-    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2.6rem;
+    font-weight: 400;
+    word-break: break-word;
+}
+
+.display > div {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: end;
-    font-size: 3rem;
-    font-weight: 400;
-    /* overflow-wrap: break-word; */
-    /* word-wrap: break-word; */
-    word-break: break-word;
+}
+
+.inputSection{
+    height: 73%;
+}
+
+.outputSection{
+    height: 20%;
+    font-size: 2.1rem;
+    color: grey;
 }
