@@ -1,11 +1,11 @@
 
 /* screen of calculator */
 .display{
+    margin: 0;
     height: 35%;
     width: 98%;
     padding: 1%;
     background-color: #F1F0E8;
-    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -27,14 +27,14 @@
 
 /* input section of display */
 .inputSection{
-    height: 73%;
+    height: 75%;
     overflow-y: auto;
 }
 
 
 /* output section of display */
 .outputSection{
-    height: 20%;
+    height: 25%;
     font-size: 2.1rem;
     color: grey;
 }

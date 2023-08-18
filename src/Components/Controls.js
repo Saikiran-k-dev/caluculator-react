@@ -95,6 +95,7 @@ const Controls = (props) => {
                 }
 
                 // store the output in state and show on screen
+                setInput(result.toString());
                 setOutput(result);
                 break;
 

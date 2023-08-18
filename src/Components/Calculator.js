@@ -30,8 +30,7 @@ const Calculator = () => {
             {/* passing the state as props */}
             <Display input={input}
                     output={output} />
-
-            
+            <hr />
             {/* Controls component to show all the buttons and implement their funtionality */}
             {/* passing the statea and setState methods as props */}
             <Controls input={input} 
