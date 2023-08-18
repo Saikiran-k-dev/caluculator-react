@@ -1,6 +1,5 @@
 
 // to show a single button on the control layout
-
 const ControlButton = (props) => {
     // getting button values and handleClick function from props
     const {index,value,handleClick} = props;
