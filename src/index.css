@@ -1,3 +1,5 @@
+
+/* styling the body tag */
 body {
   margin: 0;
   padding: 0;
@@ -15,9 +17,6 @@ code {
 }
 
 
-.card16{
-  grid-column: 1 / 3;
-}
 
 /* styling the scroll bar */
 ::-webkit-scrollbar {
@@ -29,4 +28,12 @@ code {
   background-color: #f1dda1;
   border-radius: 10px;
   height: 10px;
+}
+
+
+
+/* using grid layout in calculator buttons */
+/* a specific style to '0' button on Calculator to make it span two colums */
+.card16{
+  grid-column: 1 / 3;
 }
