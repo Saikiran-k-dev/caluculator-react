@@ -9,7 +9,7 @@ const operators = ['AC','C','%','/',
                     '0','.','='];
 
 const Controls = (props) => {
-    const {input, setInput, output, setOutput} = props;
+    const {input, setInput, setOutput} = props;
     const [isSymbolClick , setIsSymbolClick] = useState(false);
 
     const handleClick = (value) => {

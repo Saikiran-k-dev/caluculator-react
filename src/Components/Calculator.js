@@ -13,8 +13,7 @@ const Calculator = () => {
                     output={output} />
             <hr />
             <Controls input={input} 
-                    setInput={setInput}
-                    output={output} 
+                    setInput={setInput} 
                     setOutput={setOutput} />
         </div>
     );

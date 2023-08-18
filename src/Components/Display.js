@@ -4,10 +4,6 @@ const Display = (props) => {
 
     const {input,output} = props;
 
-    const inputDiv = document.querySelector('.inputSection');
-    if(input !== '0'){
-    }
-
     return(
         <>
             <div className={styles.display}>

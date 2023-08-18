@@ -8,7 +8,7 @@ function App() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.heading}>
-        <h1>CalCulator</h1>
+        <h1>Calculator</h1>
       </div>
       <Calculator />    
     </div>
