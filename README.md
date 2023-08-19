@@ -17,3 +17,5 @@ To run the following code on your system follow the following instructions.
 - JavaScript
 - CSS
 - HTML
+
+  ![ss](https://github.com/rajxode/calculator-React/assets/120395470/26b688b5-c7ae-4eb3-b8a2-6662547ec28f)
