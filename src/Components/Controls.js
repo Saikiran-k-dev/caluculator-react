@@ -21,10 +21,13 @@ const operators = ['AC','C','%','/',
 const Controls = (props) => {
 
     // getting state and methods from the props
-    const {input, setInput, setOutput} = props;
+    const {input, output, setInput, setOutput} = props;
 
     // to know if a operational symbol is clicked or not 
     const [isSymbolClick , setIsSymbolClick] = useState(false);
+
+    // to know if user clicked on equals sign or not
+    const [isEqualClick,setIsEqualClick]= useState(false);
 
 
     // handle the clicks on differnet buttons in calculator's controller
@@ -35,20 +38,30 @@ const Controls = (props) => {
 
             // when user click on All clear button remove all data 
             case 'AC':
+                // removing everthing from state
                 setInput('0');
                 setOutput(0);
+                setIsEqualClick(false);
+                setIsSymbolClick(false);
                 break;
             
+
             // when user click on Clear button remove the last entered value
             case 'C':
+                // if input has just a single value
                 if(input.length === 1){
+                    // reset the state
                     setInput('0')
                     setOutput(0);
+                    setIsEqualClick(false);
+                    setIsSymbolClick(false);
                     break;
                 }
+                // else remove the last entered value form string
                 setInput(input.slice(0,input.length-1));
                 break;
             
+
 
             // when user click on percentage button show the percentage
             case '%':
@@ -77,6 +90,7 @@ const Controls = (props) => {
                 break;
             
 
+                
             // when user click on equal sign
             case '=':
                 // if no values given after selecting mathematical operator
@@ -87,16 +101,21 @@ const Controls = (props) => {
 
                 // else find the answer 
                 var result = eval(input);
-                var stringResult =result.toString();
 
-                // if answer's length is greater than 12 then convert into exponential
-                if(stringResult.length > 12){
+                // round off a big decimal number to just 2 decimal digit
+                result = Math.round(result * 100) / 100;
+
+
+                var stringResult =result.toString();
+                // if answer's length is greater than 15 then convert into exponential
+                if(stringResult.length > 15){
                     result=(result).toExponential(2);
                 }
 
                 // store the output in state and show on screen
-                setInput(result.toString());
                 setOutput(result);
+                // set equal button clicked to true so that we can store the output inside the input variable when user tries calculate further
+                setIsEqualClick(true);
                 break;
 
 
@@ -192,10 +211,20 @@ const Controls = (props) => {
                     setInput(value.toString());
                     break;
                 }
+
+                // if equal button was clicked earlier, and user want to do further calculation 
+                if(isEqualClick){
+                    // set input as previous output so that user can perform further calculations 
+                    setInput( output.toString() + value);
+                    // set is equal click to false
+                    setIsEqualClick(false);
+                }
+                else{
+                    // else
+                    // append the entered digit at last of input string
+                    setInput(input + value);    
+                }
                 
-                // else
-                // append the entered digit at last of input string
-                setInput(input + value);
 
                 // if there was a symbol at the end of the input string 
                 if(isSymbolClick){
