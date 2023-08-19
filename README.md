@@ -10,3 +10,10 @@ To run the following code on your system follow the following instructions.
 - In side the terminal run command "npm install" to install all the dependencies used in project.
 - After complete installation, run command "npm start" in terminal.
 - To see the output in your web browser go to the following address [https://localhost:3000](https://localhost:3000).
+
+# Tools used:
+- Reactjs
+- React hooks
+- JavaScript
+- CSS
+- HTML
